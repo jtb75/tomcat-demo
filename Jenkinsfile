@@ -2,7 +2,7 @@ node {
         stage('Clone') {
                 echo 'Cloning Repo..'
                 sh """
-                git clone https://github.com/jtb75/flaskapp-hw.git
+                git clone https://github.com/jtb75/tomcat-demo.git
                 """
         }
         stage ('Build') {
