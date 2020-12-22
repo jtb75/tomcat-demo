@@ -1,17 +1,15 @@
 node {
         stage('Clone') {
-                container('build') {
                         echo 'Cloning Repo..'
                         sh """
-                        sleep 300
                         git clone https://github.com/jtb75/tomcat-demo.git
                         """
-                }
         }
         stage ('Build') {
                 container('build') {
                         echo 'Building Image..'
                         sh """
+                        sleep 180
                         docker build -t tomcat-demo:$BUILD_NUMBER tomcat-demo
                         """
                 }
