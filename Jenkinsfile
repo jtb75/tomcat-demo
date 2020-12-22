@@ -11,11 +11,7 @@ node {
                 container('build') {
                         echo 'Building Image..'
                         sh """
-                        ls -dl /usr/bin/docker
-                        ls -dl /var/run/docker.sock
-                        ls -l
-                        sleep 120
-                        /usr/bin/docker build -t tomcat-demo:$BUILD_NUMBER tomcat-demo
+                        docker build -t tomcat-demo:$BUILD_NUMBER tomcat-demo
                         """
                 }
         }
