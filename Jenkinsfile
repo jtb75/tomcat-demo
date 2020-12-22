@@ -8,12 +8,7 @@ node {
         stage ('Build') {
                 echo 'Building Image..'
                 sh """
-                pwd
-                sleep 120
-                cd tomcat-demo
-                docker build -t tomcat-demo:$BUILD_NUMBER .
-                cd ..
-                rm -fr tomcat-demo
+                docker build -t tomcat-demo:$BUILD_NUMBER /home/jenkins/workspace/TomcatDemoPipeline/tomcat-demo
                 """
         }
         stage ('Scan') {
