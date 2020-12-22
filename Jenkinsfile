@@ -1,9 +1,9 @@
 node {
         stage('Clone') {
-                        echo 'Cloning Repo..'
-                        sh """
-                        git clone https://github.com/jtb75/tomcat-demo.git
-                        """
+                echo 'Cloning Repo..'
+                sh """
+                git clone https://github.com/jtb75/tomcat-demo.git
+                """
         }
         stage ('Build') {
                 container('build') {
@@ -26,10 +26,10 @@ node {
                                 podmanPath: '',
                                 project: '',
                                 resultsFile: 'prisma-cloud-scan-results.json'
-                        prismaCloudPublish resultsFilePattern: 'prisma-cloud-scan-results.json'
                         sh """
-                        rm prisma-cloud-scan-results.json
+                        sleep 200
                         """
+                        prismaCloudPublish resultsFilePattern: 'prisma-cloud-scan-results.json'
                 }
         }
         stage ('Test') {
