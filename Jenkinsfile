@@ -18,14 +18,9 @@ node {
         stage ('Scan') {
                 container('build') {
                         echo 'Scan for Compliance and Vulnerabilities..'
-                        prismaCloudScanImage ca: '', cert: '',
-                                dockerAddress: 'unix:///var/run/docker.sock',
-                                ignoreImageBuildTime: true,
-                                image: 'tomcat-demo:$BUILD_NUMBER',
-                                key: '',
-                                logLevel: 'info',
-                                podmanPath: '',
-                                project: '',
+                        prismaCloudScanImage ca: '', cert: '', dockerAddress: 'unix:///var/run/docker.sock',
+                                image: 'tomcat-demo:$BUILD_NUMBER', key: '',
+                                logLevel: 'info', podmanPath: '', project: '',
                                 resultsFile: 'prisma-cloud-scan-results.json'
                         sh """
                         sleep 200
