@@ -4,7 +4,6 @@ node {
                 sh """
                 git clone https://github.com/jtb75/tomcat-demo.git
                 sed -i 's/BUILDNUMBER/$BUILD_NUMBER/' tomcat-demo/Dockerfile
-                cat tomcat-demo/Dockerfile
                 """
         }
         stage ('Build') {
