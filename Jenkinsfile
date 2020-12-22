@@ -8,7 +8,6 @@ node {
         stage ('Build') {
                 echo 'Building Image..'
                 sh """
-                sleep 600
                 cd tomcat-demo
                 docker build -t tomcat-demo:$BUILD_NUMBER .
                 cd ..
