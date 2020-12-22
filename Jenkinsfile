@@ -45,6 +45,12 @@ node {
                 """
         }
         stage ('Cleanup') {
-                echo 'Cleaning up Image..'
+                container('build') {
+                        echo 'Cleaning up Image..'
+                        sh """
+                        sleep 180
+                        docker rmi tomcat-demo:$BUILD_NUMBER
+                        """
+                }
         }
 }
