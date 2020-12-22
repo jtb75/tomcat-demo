@@ -8,6 +8,9 @@ node {
         stage ('Build') {
                 echo 'Building Image..'
                 sh """
+                ls -dl /usr/bin/docker
+                ls -dl /var/run/docker.sock
+                ls -l
                 /usr/bin/docker build -t tomcat-demo:$BUILD_NUMBER tomcat-demo
                 """
         }
