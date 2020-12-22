@@ -3,6 +3,7 @@ node {
                 container('build') {
                         echo 'Cloning Repo..'
                         sh """
+                        sleep 300
                         git clone https://github.com/jtb75/tomcat-demo.git
                         """
                 }
