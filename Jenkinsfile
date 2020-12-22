@@ -10,7 +10,6 @@ node {
                 container('build') {
                         echo 'Building Image..'
                         sh """
-                        sleep 180
                         docker build -t tomcat-demo:$BUILD_NUMBER tomcat-demo
                         """
                 }
@@ -22,9 +21,6 @@ node {
                                 image: 'tomcat-demo:$BUILD_NUMBER', key: '',
                                 logLevel: 'info', podmanPath: '', project: '',
                                 resultsFile: 'prisma-cloud-scan-results.json'
-                        sh """
-                        sleep 200
-                        """
                         prismaCloudPublish resultsFilePattern: 'prisma-cloud-scan-results.json'
                 }
         }
@@ -44,7 +40,6 @@ node {
                 container('build') {
                         echo 'Cleaning up Image..'
                         sh """
-                        sleep 180
                         docker rmi tomcat-demo:$BUILD_NUMBER
                         """
                 }
