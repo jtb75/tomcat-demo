@@ -11,7 +11,7 @@ node {
         stage ('Build') {
                 container('build') {
                         echo 'Building Image..'
-                        stript {
+                        script {
                                 docker.build registry + ":$BUILD_NUMBER"
                         }
                 }
