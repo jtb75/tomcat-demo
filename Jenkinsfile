@@ -6,8 +6,9 @@ node {
 
         stage('Clone') {
                 echo 'Cloning Repo..'
+                git 'https://github.com/jtb75/tomcat-demo.git'
                 sh """
-                git clone https://github.com/jtb75/tomcat-demo.git
+                #git clone https://github.com/jtb75/tomcat-demo.git
                 sed -i 's/BUILDNUMBER/$BUILD_NUMBER/' tomcat-demo/Dockerfile
                 """
         }
@@ -37,7 +38,6 @@ node {
         }
         stage ('Push') {
                 echo 'Push Image to Registry..'
-                echo $registry
                 sh """
                 sleep 2
                 """
