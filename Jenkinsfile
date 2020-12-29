@@ -7,7 +7,8 @@ node {
         stage('Clone') {
                 echo 'Cloning Repo..'
                 git 'https://github.com/jtb75/tomcat-demo.git'
-                pwd
+                def WORKSPACE = pwd
+                echo "Current workspace is $WORKSPACE"
                 sh """
                 #git clone https://github.com/jtb75/tomcat-demo.git
                 pwd
