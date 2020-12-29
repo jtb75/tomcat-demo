@@ -14,7 +14,7 @@ node {
         stage ('Build') {
                 container('build') {
                         echo 'Building Image..'
-                        echo registry
+                        echo env.registry
                         docker.build "harbor.ng20.org/demos/tomcat-demo:$BUILD_NUMBER"
                 }
         }
