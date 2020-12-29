@@ -4,6 +4,8 @@ LABEL version="1.BUILDNUMBER"
 
 ADD sample.war /usr/local/tomcat/webapps/
 ADD mazewars.war /usr/local/tomcat/webapps/
+ADD pyx.war /usr/local/tomcat/webapps/
+
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
