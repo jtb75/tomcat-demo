@@ -41,7 +41,7 @@ node {
                 echo 'Push Image to Registry..'
                 container('build') {
                         script {
-                                docker.withRegistry( '', registryCredential ) {
+                                docker.withRegistry( registry, registryCredential ) {
                                         dockerImage.push()
                                 }
                         }
