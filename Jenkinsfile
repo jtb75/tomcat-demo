@@ -1,7 +1,6 @@
 env.registry = 'harbor.ng20.org/demos/tomcat-demo'
 env.registryCredential = 'harbor-creds'
 node {
-        sh 'echo $registry'
         stage('Clone') {
                 echo 'Cloning Repo..'
                 git 'https://github.com/jtb75/tomcat-demo.git'
@@ -12,6 +11,7 @@ node {
         stage ('Build') {
                 container('build') {
                         echo 'Building Image..'
+                        sh 'echo $registry'
                         docker.build "harbor.ng20.org/demos/tomcat-demo:$BUILD_NUMBER"
                 }
         }
