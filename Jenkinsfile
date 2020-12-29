@@ -7,9 +7,11 @@ node {
         stage('Clone') {
                 echo 'Cloning Repo..'
                 git 'https://github.com/jtb75/tomcat-demo.git'
+                pwd
                 sh """
                 #git clone https://github.com/jtb75/tomcat-demo.git
-                sed -i 's/BUILDNUMBER/$BUILD_NUMBER/' tomcat-demo/Dockerfile
+                pwd
+                #sed -i 's/BUILDNUMBER/$BUILD_NUMBER/' tomcat-demo/Dockerfile
                 """
         }
         stage ('Build') {
