@@ -58,14 +58,4 @@ node {
                         """
                 }
         }
-        stage ('Deploy') {
-                container('kubernetes') {
-                        echo 'Deploying Image..'
-                        sh """
-                        kubectl --help
-                        sleep 10
-                        """
-                }
-        }
-
 }
