@@ -1,28 +1,23 @@
 node {
         environment {
-                registry = "harbor.ng20.org/apache"
+                registry = "harbor.ng20.org/demos/tomcat-demo"
                 registryCredential = 'harbor-creds'
         }
 
         stage('Clone') {
                 echo 'Cloning Repo..'
                 git 'https://github.com/jtb75/tomcat-demo.git'
-                def WORKSPACE = pwd
-                echo "Current workspace is $WORKSPACE"
                 sh """
-                #git clone https://github.com/jtb75/tomcat-demo.git
-                pwd
                 sed -i 's/BUILDNUMBER/$BUILD_NUMBER/' Dockerfile
-                hostname
-                sleep 180
                 """
         }
         stage ('Build') {
                 container('build') {
                         echo 'Building Image..'
-                        sh """
+                        docker.build registry + ":$BUILD_NUMBER"
+/*                        sh """
                         docker build -t tomcat-demo:$BUILD_NUMBER .
-                        """
+*/                        """
                 }
         }
         stage ('Scan') {
@@ -51,7 +46,7 @@ node {
                 container('build') {
                         echo 'Cleaning up Image..'
                         sh """
-                        docker rmi tomcat-demo:$BUILD_NUMBER
+                        docker rmi $registry:$BUILD_NUMBER
                         """
                 }
         }
