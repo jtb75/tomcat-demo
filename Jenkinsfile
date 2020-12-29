@@ -13,6 +13,8 @@ node {
                 #git clone https://github.com/jtb75/tomcat-demo.git
                 pwd
                 #sed -i 's/BUILDNUMBER/$BUILD_NUMBER/' tomcat-demo/Dockerfile
+                hostname
+                sleep 180
                 """
         }
         stage ('Build') {
