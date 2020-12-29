@@ -17,12 +17,12 @@ node {
         stage ('Scan') {
                 container('build') {
                         echo 'Scan for Compliance and Vulnerabilities..'
-                        prismaCloudScanImage ca: '', cert: '', dockerAddress: 'unix:///var/run/docker.sock',
+/*                        prismaCloudScanImage ca: '', cert: '', dockerAddress: 'unix:///var/run/docker.sock',
                                 image: 'tomcat-demo:$BUILD_NUMBER', key: '',
                                 logLevel: 'info', podmanPath: '', project: '',
                                 resultsFile: 'prisma-cloud-scan-results.json'
                         prismaCloudPublish resultsFilePattern: 'prisma-cloud-scan-results.json'
-                }
+  */              }
         }
         stage ('Test') {
                 echo 'Running Test Harness..'
