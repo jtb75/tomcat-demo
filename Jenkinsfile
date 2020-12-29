@@ -1,5 +1,7 @@
 env.gitrepo = 'https://github.com/jtb75/tomcat-demo.git'
 env.registry = 'harbor.ng20.org/demos/tomcat-demo'
+env.dockerImage = ''
+
 node {
         stage('Clone') {
                 echo 'Cloning Repo..'
@@ -12,7 +14,7 @@ node {
                 container('build') {
                         echo 'Building Image..'
                         script {
-                                docker.build registry + ":$BUILD_NUMBER"
+                                dockerImage = docker.build registry + ":$BUILD_NUMBER"
                         }
                 }
         }
