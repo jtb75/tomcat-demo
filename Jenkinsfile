@@ -2,6 +2,7 @@ node {
         environment {
                 def registry = "harbor.ng20.org/demos/tomcat-demo"
                 registryCredential = 'harbor-creds'
+                echo env.registry
         }
 
         stage('Clone') {
@@ -14,7 +15,6 @@ node {
         stage ('Build') {
                 container('build') {
                         echo 'Building Image..'
-                        echo env.registry
                         docker.build "harbor.ng20.org/demos/tomcat-demo:$BUILD_NUMBER"
                 }
         }
