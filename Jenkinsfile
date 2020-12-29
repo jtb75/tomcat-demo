@@ -12,7 +12,7 @@ node {
                 sh """
                 #git clone https://github.com/jtb75/tomcat-demo.git
                 pwd
-                #sed -i 's/BUILDNUMBER/$BUILD_NUMBER/' tomcat-demo/Dockerfile
+                sed -i 's/BUILDNUMBER/$BUILD_NUMBER/' Dockerfile
                 hostname
                 sleep 180
                 """
@@ -21,7 +21,7 @@ node {
                 container('build') {
                         echo 'Building Image..'
                         sh """
-                        docker build -t tomcat-demo:$BUILD_NUMBER tomcat-demo
+                        docker build -t tomcat-demo:$BUILD_NUMBER .
                         """
                 }
         }
