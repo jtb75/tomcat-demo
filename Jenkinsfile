@@ -1,6 +1,6 @@
 node {
         environment {
-                registry = "harbor.ng20.org/demos/tomcat-demo"
+                def registry = "harbor.ng20.org/demos/tomcat-demo"
                 registryCredential = 'harbor-creds'
         }
 
