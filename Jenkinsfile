@@ -1,5 +1,6 @@
 env.gitrepo = 'https://github.com/jtb75/tomcat-demo.git'
-env.registry = 'harbor.ng20.org/demos/tomcat-demo'
+env.repo = 'harbor.ng20.org/demos/tomcat-demo'
+env.registry = 'https://harbor.ng20.org'
 env.registryCredential = 'harbor-creds'
 env.dockerImage = ''
 
@@ -15,7 +16,7 @@ node {
                 container('build') {
                         echo 'Building Image..'
                         script {
-                                dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                                dockerImage = docker.build repo + ":$BUILD_NUMBER"
                         }
                 }
         }
