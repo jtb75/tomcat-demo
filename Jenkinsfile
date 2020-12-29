@@ -1,6 +1,7 @@
 env.registry = 'harbor.ng20.org/demos/tomcat-demo'
 env.registryCredential = 'harbor-creds'
 node {
+        sh 'echo $registry'
         stage('Clone') {
                 echo 'Cloning Repo..'
                 git 'https://github.com/jtb75/tomcat-demo.git'
