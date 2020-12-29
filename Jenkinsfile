@@ -2,20 +2,20 @@ node {
         environment {
                 def registry = "harbor.ng20.org/demos/tomcat-demo"
                 registryCredential = 'harbor-creds'
-                echo env.registry
         }
 
         stage('Clone') {
                 echo 'Cloning Repo..'
-                git 'https://github.com/jtb75/tomcat-demo.git'
+/*                git 'https://github.com/jtb75/tomcat-demo.git'
                 sh """
                 sed -i 's/BUILDNUMBER/$BUILD_NUMBER/' Dockerfile
-                """
+*/                """
         }
         stage ('Build') {
                 container('build') {
                         echo 'Building Image..'
-                        docker.build "harbor.ng20.org/demos/tomcat-demo:$BUILD_NUMBER"
+                        echo "Registry is ${registry}"
+//                        docker.build "harbor.ng20.org/demos/tomcat-demo:$BUILD_NUMBER"
                 }
         }
         stage ('Scan') {
