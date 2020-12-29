@@ -1,4 +1,4 @@
-node {
+pipeline {
         environment {
                 def registry = "harbor.ng20.org/demos/tomcat-demo"
                 registryCredential = 'harbor-creds'
