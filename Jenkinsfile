@@ -46,7 +46,7 @@ node {
                 container('build') {
                         echo 'Cleaning up Image..'
                         sh """
-                        docker rmi harbor.ng20.org/demos/tomcat-demo:$BUILD_NUMBER
+                        #docker rmi harbor.ng20.org/demos/tomcat-demo:$BUILD_NUMBER
                         """
                 }
         }
