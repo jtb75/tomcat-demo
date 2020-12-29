@@ -1,9 +1,9 @@
+env.gitrepo = 'https://github.com/jtb75/tomcat-demo.git'
 env.registry = 'harbor.ng20.org/demos/tomcat-demo'
-env.registryCredential = 'harbor-creds'
 node {
         stage('Clone') {
                 echo 'Cloning Repo..'
-                git 'https://github.com/jtb75/tomcat-demo.git'
+                git gitrepo
                 sh """
                 sed -i 's/BUILDNUMBER/$BUILD_NUMBER/' Dockerfile
                 """
