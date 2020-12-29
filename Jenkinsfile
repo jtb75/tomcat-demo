@@ -39,9 +39,11 @@ node {
         }
         stage ('Push') {
                 echo 'Push Image to Registry..'
-                script {
-                        docker.withRegistry( '', registryCredential ) {
-                                dockerImage.push()
+                container('build') {
+                        script {
+                                docker.withRegistry( '', registryCredential ) {
+                                        dockerImage.push()
+                                }
                         }
                 }
                 sh """
