@@ -6,27 +6,29 @@ node {
 
         stage('Clone') {
                 echo 'Cloning Repo..'
-/*                git 'https://github.com/jtb75/tomcat-demo.git'
+                git 'https://github.com/jtb75/tomcat-demo.git'
                 sh """
                 sed -i 's/BUILDNUMBER/$BUILD_NUMBER/' Dockerfile
-*/                """
+                """
         }
         stage ('Build') {
                 container('build') {
                         echo 'Building Image..'
                         echo "Registry is ${registry}"
+                        docker.build "harbor.ng20.org/demos/tomcat-demo:$BUILD_NUMBER"
                 }
         }
         stage ('Scan') {
                 container('build') {
                         echo 'Scan for Compliance and Vulnerabilities..'
-/*                         docker.build "harbor.ng20.org/demos/tomcat-demo:$BUILD_NUMBER"
+/*                         
                         prismaCloudScanImage ca: '', cert: '', dockerAddress: 'unix:///var/run/docker.sock',
                                 image: 'tomcat-demo:$BUILD_NUMBER', key: '',
                                 logLevel: 'info', podmanPath: '', project: '',
                                 resultsFile: 'prisma-cloud-scan-results.json'
                         prismaCloudPublish resultsFilePattern: 'prisma-cloud-scan-results.json'
-*/                }
+*/
+                }
         }
         stage ('Test') {
                 echo 'Running Test Harness..'
