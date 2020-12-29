@@ -1,4 +1,9 @@
 node {
+        environment {
+                registry = "harbor.ng20.org/apache"
+                registryCredential = 'harbor-creds'
+        }
+
         stage('Clone') {
                 echo 'Cloning Repo..'
                 sh """
@@ -22,7 +27,7 @@ node {
                                 logLevel: 'info', podmanPath: '', project: '',
                                 resultsFile: 'prisma-cloud-scan-results.json'
                         prismaCloudPublish resultsFilePattern: 'prisma-cloud-scan-results.json'
-  */              }
+*/                }
         }
         stage ('Test') {
                 echo 'Running Test Harness..'
@@ -32,6 +37,7 @@ node {
         }
         stage ('Push') {
                 echo 'Push Image to Registry..'
+                echo $registry
                 sh """
                 sleep 2
                 """
