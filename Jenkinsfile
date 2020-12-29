@@ -1,5 +1,6 @@
 env.gitrepo = 'https://github.com/jtb75/tomcat-demo.git'
 env.registry = 'harbor.ng20.org/demos/tomcat-demo'
+env.registryCredential = 'harbor-creds'
 env.dockerImage = ''
 
 node {
@@ -38,6 +39,11 @@ node {
         }
         stage ('Push') {
                 echo 'Push Image to Registry..'
+                script {
+                        docker.withRegistry( '', registryCredential ) {
+                                dockerImage.push()
+                        }
+                }
                 sh """
                 sleep 2
                 """
