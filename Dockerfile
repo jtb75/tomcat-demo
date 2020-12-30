@@ -1,4 +1,4 @@
-FROM tomcat:8.0-alpine
+FROM harbor.ng20.org/apache/tomcat:latest
 LABEL maintainer="joe.buhr@gmail.com"
 LABEL version="1.BUILDNUMBER"
 
