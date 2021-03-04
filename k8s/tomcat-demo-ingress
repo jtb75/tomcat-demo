@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: tomcat-demo-ing
+spec:
+  rules:
+  - host: tomcat-demo.ng20.org
+    http:
+      paths:
+      - backend:
+          serviceName: tomcat-demo-svc
+          servicePort: 8080
+        path: /
