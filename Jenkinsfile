@@ -4,7 +4,7 @@ env.registry = 'https://harbor.ng20.org'
 env.registryCredential = 'harbor-creds'
 env.dockerImage = ''
 
-node {
+node ('jenkins-agent'){
         stage('Clone') {
                 echo 'Cloning Repo..'
                 git gitrepo
