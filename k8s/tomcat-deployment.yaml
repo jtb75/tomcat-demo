@@ -2,23 +2,23 @@ apiVersion: v1
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tomcat-demo
+  name: tomcat-demo-app
   namespace: tomcat-demo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tomcat-demo
+      app: tomcat-demo-app
   template:
     metadata:
       labels:
-        app: tomcat-demo
+        app: tomcat-demo-app
     spec:
       nodeSelector:
         "beta.kubernetes.io/os": linux
       containers:
       - name: tomcat-demo
-        image: harbor.ng20.org/demos/tomcat-demo:latest
+        image: harbor.ng20.org/build/tomcat-demo:latest
         resources:
           requests:
             cpu: 100m
